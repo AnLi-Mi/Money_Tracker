@@ -1,14 +1,14 @@
 from flask import Flask, render_template
 
-from flaskext.mysql import MySQL
+#from flaskext.mysql import MySQL
 
 app=Flask(__name__)
-mysql=MySQL()
+#mysql=MySQL()
 
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = '8G13rm3k'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-mysql.init_app(app)
+#app.config['MYSQL_DATABASE_USER'] = 'root'
+#app.config['MYSQL_DATABASE_PASSWORD'] = '8G13rm3k'
+#app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+#mysql.init_app(app)
 
 @app.route('/')
 def welcome():
@@ -37,7 +37,7 @@ def connect_msql():
         print ("Connection unsuccessful")
 
 
-connect_msql()
+#connect_msql()
 
 
 
