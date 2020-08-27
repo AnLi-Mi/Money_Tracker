@@ -1,14 +1,15 @@
 from flask import Flask, render_template, request
 
-#from flaskext.mysql import MySQL
+from flaskext.mysql import MySQL
 
 app=Flask(__name__)
-#mysql=MySQL()
+mysql=MySQL()
 
-#app.config['MYSQL_DATABASE_USER'] = 'root'
-#app.config['MYSQL_DATABASE_PASSWORD'] = '8G13rm3k'
-#app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-#mysql.init_app(app)
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = '8G13rm3k'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_DATABASE'] = 'money_track'
+mysql.init_app(app)
 
 @app.route('/')
 def welcome():
@@ -29,6 +30,8 @@ def add_transaction():
         notes=request.form.get('notes')
         for_whom=request.form.get('for')
         who_paid=request.form.get('who_paid')
+        query=f"INSERT INTO money_track.spendings (purchase_date, amount, category, notes, for_whom, who_paid) VALUES ('{pur_date}', {amount}, '{category}', '{notes}', '{for_whom}', '{who_paid}');"
+        insert_query(query)
     return render_template('addtransaction.html',
                            pur_date=pur_date,
                            amount=amount,
@@ -55,8 +58,16 @@ def connect_msql():
     # Terminate
         print ("Connection unsuccessful")
 
+def insert_query(query):
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute(query)
+    conn.commit()
 
-#connect_msql()
+
+connect_msql()
+
+
 
 
 
