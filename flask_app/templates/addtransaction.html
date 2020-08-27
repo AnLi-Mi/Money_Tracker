@@ -7,11 +7,11 @@
 {% block body %}
 <div>
  Please enter the details of your resent transaction: <br><br>
-<form methond='post' action='/addtransaction'>
+<form method='post' action='/addtransaction'>
   Date of the purchase <br><br>
-    <input type=data name='pur_date'> </input><br><br><br>
+    <input type=text name='pur_date'> </input><br><br><br>
   Amount spent <br><br>
-    <input type=float name='amoutn'> </input><br><br><br>
+    <input type=float name='amount'> </input><br><br><br>
   Category <br><br>
     <input type=text name='category'> </input><br><br><br>
   Notes <br><br>
@@ -22,6 +22,18 @@
     <input type=text name='who_paid'> </input><br><br><br>
   <button  value='submit' type='submit'>Add</button>
 </form>
+</div><br>
+
+<div>
+    {% if pur_date, category, amount, notes,for_whom, who_paid  %}
+    <p> Thank you for entering the transaction:<br>
+    On {{pur_date}} {{who_paid}} paid {{amount}}zł for {{for_whom}}'s {{category}} ({{notes}}). </p>
+    {% endif %}
+
+
+
+
 </div>
+
 
 {% endblock %}

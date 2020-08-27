@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 #from flaskext.mysql import MySQL
 
@@ -14,9 +14,28 @@ app=Flask(__name__)
 def welcome():
     return render_template('welcome.html')
 
-@app.route('/addtransaction')
+@app.route('/addtransaction', methods=['GET', 'POST'])
 def add_transaction():
-    return render_template('addtransaction.html')
+    pur_date=''
+    amount=0
+    category=''
+    notes=''
+    for_whom=''
+    who_paid=''
+    if request.method=='POST' and 'pur_date' in request.form:
+        pur_date=request.form.get('pur_date')
+        amount=request.form.get('amount')
+        category=request.form.get('category')
+        notes=request.form.get('notes')
+        for_whom=request.form.get('for')
+        who_paid=request.form.get('who_paid')
+    return render_template('addtransaction.html',
+                           pur_date=pur_date,
+                           amount=amount,
+                           category=category,
+                           notes=notes,
+                           for_whom=for_whom,
+                           who_paid=who_paid)
 
 @app.route('/seealltransactions')
 def see_all():
