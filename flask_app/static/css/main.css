@@ -16,8 +16,9 @@ button{
 
 
 table, th, td {
+    border-top: 1px solid #222831;
+    border-right: 1px solid #222831;
     border-bottom: 1px solid #222831;
-
 }
 
 table {
@@ -29,6 +30,8 @@ table {
 
 th {
     background-color: #4f8a8b;
+    border-bottom: 3px solid ;
+    
 }
 
 td {
