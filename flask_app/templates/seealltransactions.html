@@ -10,21 +10,33 @@
     <tr>
         <th>ID</th>
         <th>Date</th>
+        <th style="border-left: none"></th>
         <th>Amount</th>
+        <th></th>
         <th>Category</th>
+        <th></th>
         <th>Notes</th>
+        <th></th>
         <th>For whom?</th>
+        <th></th>
         <th>Who paid?</th>
+        <th></th>
     </tr>
 {% for row in spendings %}
     <tr>
         <td>{{row[0]}}</td>
         <td>{{row[1]}}</td>
+        <td style="border-left: 10px" ><button>Edit</button></td>
         <td>{{row[2]}}</td>
+        <td><button>Edit</button></td>
         <td>{{row[3]}}</td>
+        <td><button>Edit</button></td>
         <td>{{row[4]}}</td>
+        <td><button>Edit</button></td>
         <td>{{row[5]}}</td>
+        <td><button>Edit</button></td>
         <td>{{row[6]}}</td>
+        <td><button>Edit</button></td>
     </tr>
 
 {%endfor%}
