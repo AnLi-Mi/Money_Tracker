@@ -2,7 +2,10 @@ from flask import Flask, render_template, request
 
 from flaskext.mysql import MySQL
 
+#initialising flask app
 app=Flask(__name__)
+
+#initialising and configuring MySQL DB
 mysql=MySQL()
 
 app.config['MYSQL_DATABASE_USER'] = 'root'
@@ -24,12 +27,14 @@ def add_transaction():
     for_whom=''
     who_paid=''
     if request.method=='POST' and 'pur_date' in request.form:
+        #turning user's posts into variables 
         pur_date=request.form.get('pur_date')
         amount=request.form.get('amount')
         category=request.form.get('category')
         notes=request.form.get('notes')
         for_whom=request.form.get('for')
         who_paid=request.form.get('who_paid')
+        #preparing a string for a SQL qeuery inserting values posted by the user
         query=f"INSERT INTO money_track.spendings (purchase_date, amount, category, notes, for_whom, who_paid) VALUES ('{pur_date}', {amount}, '{category}', '{notes}', '{for_whom}', '{who_paid}');"
         insert_query(query)
     return render_template('addtransaction.html',
@@ -42,13 +47,18 @@ def add_transaction():
 
 @app.route('/seealltransactions')
 def see_all():
-    return render_template('seealltransactions.html')
+    spendings = ''
+    query = 'SELECT * FROM money_track.spendings'
+    spendings = display_spendings(query)
+    return render_template('seealltransactions.html', spendings=spendings)
 
 @app.route('/monthlysummary')
 def monthly_summary():
     return render_template('monthlysummary.html')
 
 
+
+#checking connection
 def connect_msql():
     conn = mysql.connect()
     if (conn):
@@ -58,14 +68,27 @@ def connect_msql():
     # Terminate
         print ("Connection unsuccessful")
 
+connect_msql()
+
+# function for insert SQL query
 def insert_query(query):
     conn = mysql.connect()
     cursor = conn.cursor()
     cursor.execute(query)
     conn.commit()
 
+#function displaying records
+def display_spendings(query):
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute(query)
+    result=cursor.fetchall()
+    return result
 
-connect_msql()
+
+
+
+
 
 
 
