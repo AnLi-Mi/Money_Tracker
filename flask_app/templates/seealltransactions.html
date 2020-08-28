@@ -2,6 +2,34 @@
 {% block head %}
 <h1> All Transactions </h1>
 {% endblock %}
+
 {% block body %}
-<p> Content 1 </p>
+
+{% if spendings %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Notes</th>
+        <th>For whom?</th>
+        <th>Who paid?</th>
+    </tr>
+{% for row in spendings %}
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
+        <td>{{row[5]}}</td>
+        <td>{{row[6]}}</td>
+    </tr>
+
+{%endfor%}
+</table>
+
+{% endif %}
+
 {% endblock %}
