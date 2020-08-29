@@ -56,13 +56,15 @@ def see_all():
 def monthly_summary():
     summed_spendings = ''
     category = ''
+    for_whom=''
     if request.method == "POST" and "chosen_category" in request.form:
         category=request.form.get("chosen_category")
-        query = f"SELECT SUM(amount) FROM money_track.spendings WHERE category = '{category}';"
+        for_whom=request.form.get("for")
+        query = f"SELECT SUM(amount) FROM money_track.spendings WHERE category = '{category}' and for_whom='{for_whom}';"
         summed_spendings = display_spendings(query)
         summed_spendings= summed_spendings[0]
         summed_spendings= summed_spendings[0]
-    return render_template('monthlysummary.html', summed_spendings=summed_spendings, category=category)
+    return render_template('monthlysummary.html', summed_spendings=summed_spendings, category=category, for_whom=for_whom)
 
 
 
