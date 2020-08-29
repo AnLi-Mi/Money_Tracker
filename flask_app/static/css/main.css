@@ -11,6 +11,7 @@ input {
 
 button{
     background-color: #fbd46d;
+    border-radius: 5px;
 }
 
 table {
