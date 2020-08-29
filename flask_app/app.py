@@ -60,6 +60,8 @@ def monthly_summary():
         category=request.form.get("chosen_category")
         query = f"SELECT SUM(amount) FROM money_track.spendings WHERE category = '{category}';"
         summed_spendings = display_spendings(query)
+        summed_spendings= summed_spendings[0]
+        summed_spendings= summed_spendings[0]
     return render_template('monthlysummary.html', summed_spendings=summed_spendings, category=category)
 
 
@@ -90,7 +92,6 @@ def display_spendings(query):
     cursor.execute(query)
     result=cursor.fetchall()
     return result
-
 
 
 
