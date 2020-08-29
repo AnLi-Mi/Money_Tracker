@@ -8,35 +8,35 @@
 {% if spendings %}
 <table>
     <tr>
-        <th>ID</th>
-        <th>Date</th>
-        <th style="border-left: none"></th>
-        <th>Amount</th>
+        <th class=left_border>ID</th>
+        <th class=left_border>Date</th>
         <th></th>
-        <th>Category</th>
+        <th class=left_border>Amount</th>
         <th></th>
-        <th>Notes</th>
+        <th class=left_border>Category</th>
         <th></th>
-        <th>For whom?</th>
+        <th class=left_border>Notes</th>
         <th></th>
-        <th>Who paid?</th>
+        <th class=left_border>For whom?</th>
         <th></th>
+        <th class=left_border>Who paid?</th>
+        <th class=right_border></th>
     </tr>
 {% for row in spendings %}
     <tr>
-        <td>{{row[0]}}</td>
-        <td>{{row[1]}}</td>
-        <td style="border-left: 10px" ><button>Edit</button></td>
-        <td>{{row[2]}}</td>
+        <td class=left_border>{{row[0]}}</td>
+        <td class=left_border>{{row[1]}}</td>
+        <td ><button>Edit</button></td>
+        <td class=left_border>{{row[2]}}</td>
         <td><button>Edit</button></td>
-        <td>{{row[3]}}</td>
+        <td class=left_border>{{row[3]}}</td>
         <td><button>Edit</button></td>
-        <td>{{row[4]}}</td>
+        <td class=left_border>{{row[4]}}</td>
         <td><button>Edit</button></td>
-        <td>{{row[5]}}</td>
+        <td class=left_border>{{row[5]}}</td>
         <td><button>Edit</button></td>
-        <td>{{row[6]}}</td>
-        <td><button>Edit</button></td>
+        <td class=left_border>{{row[6]}}</td>
+        <td class=right_border><button>Edit</button></td>
     </tr>
 
 {%endfor%}
