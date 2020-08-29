@@ -57,10 +57,10 @@ def monthly_summary():
     summed_spendings = ''
     category = ''
     if request.method == "POST" and "chosen_category" in request.form:
-        category=reguest.form.get("chosen_category")
-        query = f"SELECT SUM(amount) FROM money_track.spendings WHERE category = '{chosen_category}';"
+        category=request.form.get("chosen_category")
+        query = f"SELECT SUM(amount) FROM money_track.spendings WHERE category = '{category}';"
         summed_spendings = display_spendings(query)
-        return render_template('monthlysummary.html', summed_spendings=summed_spendings, category=category)
+    return render_template('monthlysummary.html', summed_spendings=summed_spendings, category=category)
 
 
 
