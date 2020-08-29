@@ -15,13 +15,29 @@ button{
 
 
 
-table, th, td {
+th, td {
     border-top: 1px solid #222831;
-    border-right: 1px solid #222831;
     border-bottom: 1px solid #222831;
 }
 
+th.left_border {
+    border-left: 1px solid #222831;
+}
+
+th.right_border {
+    border-right: 1px solid #222831;
+}
+
+td.left_border {
+    border-left: 1px solid #222831;
+}
+
+td.right_border {
+    border-right: 1px solid #222831;
+}
+
 table {
+    boder: 1px solid #222831;
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
@@ -31,7 +47,7 @@ table {
 th {
     background-color: #4f8a8b;
     border-bottom: 3px solid ;
-    
+
 }
 
 td {
