@@ -52,9 +52,15 @@ def see_all():
     spendings = display_spendings(query)
     return render_template('seealltransactions.html', spendings=spendings)
 
-@app.route('/monthlysummary')
+@app.route('/monthlysummary', methods=['GET', 'POST'])
 def monthly_summary():
-    return render_template('monthlysummary.html')
+    summed_spendings = ''
+    category = ''
+    if request.method == "POST" and "chosen_category" in request.form:
+        category=reguest.form.get("chosen_category")
+        query = f"SELECT SUM(amount) FROM money_track.spendings WHERE category = '{chosen_category}';"
+        summed_spendings = display_spendings(query)
+        return render_template('monthlysummary.html', summed_spendings=summed_spendings, category=category)
 
 
 
@@ -84,6 +90,8 @@ def display_spendings(query):
     cursor.execute(query)
     result=cursor.fetchall()
     return result
+
+
 
 
 
