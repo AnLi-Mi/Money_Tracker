@@ -95,6 +95,13 @@ def display_spendings(query):
     result=cursor.fetchall()
     return result
 
+def onclick_test():
+    query="UPDATE money_track.spendings SET amount='99' WHERE id="
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute(query)
+    conn.commit()
+
 
 
 
