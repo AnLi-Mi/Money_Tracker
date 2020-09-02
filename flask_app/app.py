@@ -54,7 +54,12 @@ def see_all():
 
 @app.route('/editrecord')
 def edit():
-   return render_template('editrecord.html')
+    current_record = ''
+    query_select_record= 'SELECT * FROM money_track.spendings WHERE ID=2'
+    current_record = display_spendings(query_select_record)
+    #query=f"UPDATE money_track.spendings SET {column}={new_value} WHERE id={??}"
+    #update_record(query)
+    return render_template('editrecord.html', current_record=current_record)
 
 @app.route('/monthlysummary', methods=['GET', 'POST'])
 def monthly_summary():
@@ -100,8 +105,7 @@ def display_spendings(query):
     result=cursor.fetchall()
     return result
 
-def onclick_test():
-    query="UPDATE money_track.spendings SET amount='99' WHERE id=2"
+def update_record(query):
     conn = mysql.connect()
     cursor = conn.cursor()
     cursor.execute(query)

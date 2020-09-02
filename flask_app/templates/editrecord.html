@@ -2,3 +2,33 @@
 {% block head %}
 <h1> edit record! </h1>
 {% endblock %}
+
+{% block body%}
+
+
+<table>
+<tr>
+    <th class=left_border>ID</th>
+    <th class=left_border>Date</th>
+    <th class=left_border>Amount</th>
+    <th class=left_border>Category</th>
+    <th class=left_border>Notes</th>
+    <th class=left_border>For whom?</th>
+    <th class="left_border right_border">Who paid?</th>
+{% if current_record %}
+
+{% for row in current_record%}
+<tr>
+    <td><input placeholder="{{row[0]}}"></input></td>
+    <td>{{row[1]}}</td>
+    <td>{{row[2]}}</td>
+    <td>{{row[3]}}</td>
+    <td>{{row[4]}}</td>
+    <td>{{row[5]}}</td>
+    <td>{{row[6]}}</td>
+</tr>
+{% endfor %}
+{% endif %}
+</table>
+
+{% endblock %}
