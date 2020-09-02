@@ -26,7 +26,7 @@
         <td class=left_border>{{row[4]}}</td>
         <td class=left_border>{{row[5]}}</td>
         <td class=left_border>{{row[6]}}</td>
-        <td class=right_border><a href="{{ url_for('editrecord', purchase_id={{row[0]}})}}"><button>Edit</button></a></td>
+        <td class=right_border><a href="http://127.0.0.1:5000/editrecord/{{row[0]}}"><button>Edit</button></a></td>
     </tr>
 
 {%endfor%}
