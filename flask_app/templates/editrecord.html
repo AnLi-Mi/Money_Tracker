@@ -5,7 +5,7 @@
 
 {% block body%}
 
-<form method="post" action="/editrecord">
+<form method="post" action="/editrecord/<purchase_id>">
 <table>
 <tr>
     <th class=left_border>ID</th>
@@ -20,7 +20,7 @@
 {% for row in current_record%}
 
 <tr>
-    <td class=left_border>{{row[0]}}</td>
+    <td class=left_border>{{purchase_id}}</td>
     <td class=left_border><input value="{{row[1]}}" type="text" name="new_date"></td>
     <td class=left_border><input value="{{row[2]}}" type="text" name="new_amount"></td>
     <td class=left_border><input value="{{row[3]}}" type="text" name="new_category"></td>

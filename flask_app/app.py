@@ -52,10 +52,11 @@ def see_all():
     spendings = display_spendings(query)
     return render_template('seealltransactions.html', spendings=spendings)
 
-@app.route('/editrecord', methods=['GET', 'POST'])
-def edit():
+@app.route('/editrecord/<purchase_id>', methods=['GET', 'POST'])
+def edit(purchase_id=None):
+    #purchase_id = 
     current_record = ''
-    query_select_record= 'SELECT * FROM money_track.spendings WHERE ID=2'
+    query_select_record= f'SELECT * FROM money_track.spendings WHERE ID={purchase_id}'
     current_record = display_spendings(query_select_record)
     new_date=''
     new_amount=''
@@ -70,9 +71,9 @@ def edit():
         new_note=request.form.get("new_notes")
         new_for=request.form.get("new_for")
         new_paid_by =request.form.get("new_paid_by")
-        query=f"UPDATE money_track.spendings SET purchase_date='{new_date}', amount = '{new_amount}', category='{new_category}', notes = '{new_note}', for_whom='{new_for}', who_paid ='{new_paid_by}'  WHERE id=2"
+        query=f"UPDATE money_track.spendings SET purchase_date='{new_date}', amount = '{new_amount}', category='{new_category}', notes = '{new_note}', for_whom='{new_for}', who_paid ='{new_paid_by}'  WHERE id={purchase_id}"
         update_record(query)
-    return render_template('editrecord.html', current_record=current_record, new_date=new_date, new_amount=new_amount, new_category=new_category, new_note=new_note, new_for=new_for, new_paid_by=new_paid_by)
+    return render_template('editrecord.html', current_record=current_record, purchase_id=purchase_id, new_date=new_date, new_amount=new_amount, new_category=new_category, new_note=new_note, new_for=new_for, new_paid_by=new_paid_by)
 
 @app.route('/monthlysummary', methods=['GET', 'POST'])
 def monthly_summary():
