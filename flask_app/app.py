@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 
 from flaskext.mysql import MySQL
 
@@ -52,11 +52,16 @@ def see_all():
     spendings = display_spendings(query)
     return render_template('seealltransactions.html', spendings=spendings)
 
+@app.route('/editrecord')
+def edit():
+   return render_template('editrecord.html')
+
 @app.route('/monthlysummary', methods=['GET', 'POST'])
 def monthly_summary():
     summed_spendings = ''
     category = ''
     for_whom=''
+    onclick_test()
     if request.method == "POST" and "chosen_category" in request.form:
         category=request.form.get("chosen_category")
         for_whom=request.form.get("for")
@@ -96,7 +101,7 @@ def display_spendings(query):
     return result
 
 def onclick_test():
-    query="UPDATE money_track.spendings SET amount='99' WHERE id="
+    query="UPDATE money_track.spendings SET amount='99' WHERE id=2"
     conn = mysql.connect()
     cursor = conn.cursor()
     cursor.execute(query)

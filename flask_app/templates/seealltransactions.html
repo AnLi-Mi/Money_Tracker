@@ -9,11 +9,11 @@
 <table>
     <tr>
         <th class=left_border>ID</th>
-        <th colspan="2" class=left_border>Date</th>
-        <th colspan="2" class=left_border>Amount</th>
-        <th colspan="2" class=left_border>Category</th>
-        <th colspan="2" class=left_border>Notes</th>
-        <th colspan="2" class=left_border>For whom?</th>
+        <th class=left_border>Date</th>
+        <th class=left_border>Amount</th>
+        <th class=left_border>Category</th>
+        <th class=left_border>Notes</th>
+        <th class=left_border>For whom?</th>
         <th colspan="2" class="left_border right_border" >Who paid?</th>
 
     </tr>
@@ -21,17 +21,12 @@
     <tr>
         <td class=left_border>{{row[0]}}</td>
         <td class=left_border>{{row[1]}}</td>
-        <td ><button onclick="onclick_test()">Edit</button></td>
         <td class=left_border>{{row[2]}}</td>
-        <td><button>Edit</button></td>
         <td class=left_border>{{row[3]}}</td>
-        <td><button>Edit</button></td>
         <td class=left_border>{{row[4]}}</td>
-        <td><button>Edit</button></td>
         <td class=left_border>{{row[5]}}</td>
-        <td><button>Edit</button></td>
         <td class=left_border>{{row[6]}}</td>
-        <td class=right_border><button>Edit</button></td>
+        <td class=right_border><a href="http://127.0.0.1:5000//editrecord"><button>Edit</button></a></td>
     </tr>
 
 {%endfor%}
