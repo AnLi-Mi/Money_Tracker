@@ -53,8 +53,7 @@ def see_all():
     return render_template('seealltransactions.html', spendings=spendings)
 
 @app.route('/editrecord/<purchase_id>', methods=['GET', 'POST'])
-def edit(purchase_id=None):
-    #purchase_id = 
+def edit():
     current_record = ''
     query_select_record= f'SELECT * FROM money_track.spendings WHERE ID={purchase_id}'
     current_record = display_spendings(query_select_record)
