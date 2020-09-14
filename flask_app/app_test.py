@@ -1,7 +1,5 @@
 import unittest
 import app
-import pymysql
-
 
 class AppTests(unittest.TestCase):
 
@@ -9,9 +7,6 @@ class AppTests(unittest.TestCase):
         query="SELECT amount FROM money_track.spendings WHERE ID =2;"
         result = app.display_spendings(query)
         self.assertEqual(result, 89)
-
-    def test_SQL_value(self):
-        self.assertRaises(pymysql.err.ProgrammingError, app.display_spendings, "koko")
 
     def test_SQL_insert(self):
         pass
