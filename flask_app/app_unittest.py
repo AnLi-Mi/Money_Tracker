@@ -1,9 +1,12 @@
 import unittest
+import app
 
-class App_test(unittest.TestCase):
+class AppTests(unittest.TestCase):
 
     def test_SQL_fatch(self):
-        pass
+        query="SELECT amount FROM money_track.spendings WHERE ID =2;"
+        result = app.display_spendings(query)
+        self.assertEqual(result, 89)
 
     def test_SQL_insert(self):
         pass

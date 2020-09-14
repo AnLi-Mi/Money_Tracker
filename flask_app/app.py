@@ -116,6 +116,8 @@ def display_spendings(query):
     cursor = conn.cursor()
     cursor.execute(query)
     result=cursor.fetchall()
+    result = result[0]
+    result = result[0]
     return result
 
 def update_record(query):
@@ -123,6 +125,7 @@ def update_record(query):
     cursor = conn.cursor()
     cursor.execute(query)
     conn.commit()
+    
 
 
 
